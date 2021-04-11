@@ -1,0 +1,16 @@
+[
+    {
+        "modid": "dkm",
+        "name": "DKM",
+        "description": "A lit bit of new Medicine",
+        "version": "${version}",
+        "mcversion": "${mcversion}",
+        "url": "",
+        "updateUrl": "",
+        "authorList": ["ijo42"],
+        "credits": "",
+        "logoFile": "",
+        "screenshots": [],
+        "dependencies": []
+    }
+]
