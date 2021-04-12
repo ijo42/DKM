@@ -42,5 +42,5 @@ jobs :
 
       - uses : actions/upload-artifact@v2
         with :
-          path : build/libs/DKA*
+          path : build/libs/DKM*
           if-no-files-found : error
