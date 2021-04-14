@@ -1,4 +1,4 @@
-package ru.ijo42.dkm.medicaments;
+package ru.ijo42.dkm.medicaments.compressing;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -9,19 +9,19 @@ import ru.ijo42.dkm.interfaces.EffectConsumer;
 
 import javax.annotation.Nonnull;
 
-public class BigBandageItem extends MedicamentBaseItem {
+public class HarnessItem extends MedicamentBaseItem {
 
-    public BigBandageItem() {
-        super(new BigBandageSpecs());
+    public HarnessItem() {
+        super(new HarnessSpecs());
     }
 
-    static class BigBandageSpecs implements IMedicamentSpecs {
+    static class HarnessSpecs implements IMedicamentSpecs {
 
         @Nonnull
         @Override
         public EffectConsumer<ItemStack, World, EntityLivingBase> getRelatedEffects() {
             return (itemStack, world, entityLivingBase) -> {
-               //TODO: снимать легкое кровотечение
+               //TODO: снимать тяжелое кровотечение
             };
         }
 
@@ -32,13 +32,13 @@ public class BigBandageItem extends MedicamentBaseItem {
 
         @Override
         public int getMaxDamage() {
-            return 2;
+            return 1;
         }
 
         @Nonnull
         @Override
         public String getName() {
-            return "bigbandage";
+            return "harness";
         }
 
     }

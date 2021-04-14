@@ -25,4 +25,13 @@ item.staffoe.name=Hemostatic Staffoe
 item.splint.desc=Lorem ipsum dolor sit amet
 item.splint.name=Compression Splint
 
+item.materoe.desc=Lorem ipsum dolor sit amet
+item.materoe.name=Compression Splint Materoe
+
+item.ibuprofon.desc=Lorem ipsum dolor sit amet
+item.ibuprofon.name=Ibuprofon
+
+item.ketonol.desc=Lorem ipsum dolor sit amet
+item.ketonol.name=Ketonol
+
 itemGroup.dkm=DKM - Medicine mod

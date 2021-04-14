@@ -1,4 +1,4 @@
-package ru.ijo42.dkm.medicaments;
+package ru.ijo42.dkm.medicaments.compressing;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -9,13 +9,13 @@ import ru.ijo42.dkm.interfaces.EffectConsumer;
 
 import javax.annotation.Nonnull;
 
-public class BandageItem extends MedicamentBaseItem {
+public class BigBandageItem extends MedicamentBaseItem {
 
-    public BandageItem() {
-        super(new BandageSpecs());
+    public BigBandageItem() {
+        super(new BigBandageSpecs());
     }
 
-    static class BandageSpecs implements IMedicamentSpecs {
+    static class BigBandageSpecs implements IMedicamentSpecs {
 
         @Nonnull
         @Override
@@ -32,13 +32,13 @@ public class BandageItem extends MedicamentBaseItem {
 
         @Override
         public int getMaxDamage() {
-            return 1;
+            return 2;
         }
 
         @Nonnull
         @Override
         public String getName() {
-            return "bandage";
+            return "bigbandage";
         }
 
     }

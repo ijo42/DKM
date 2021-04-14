@@ -1,4 +1,4 @@
-package ru.ijo42.dkm.medicaments;
+package ru.ijo42.dkm.medicaments.compressing;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -9,19 +9,19 @@ import ru.ijo42.dkm.interfaces.EffectConsumer;
 
 import javax.annotation.Nonnull;
 
-public class Splint extends MedicamentBaseItem {
+public class BandageItem extends MedicamentBaseItem {
 
-    public Splint() {
-        super(new SplintSpecs());
+    public BandageItem() {
+        super(new BandageSpecs());
     }
 
-    static class SplintSpecs implements IMedicamentSpecs {
+    static class BandageSpecs implements IMedicamentSpecs {
 
         @Nonnull
         @Override
         public EffectConsumer<ItemStack, World, EntityLivingBase> getRelatedEffects() {
             return (itemStack, world, entityLivingBase) -> {
-               //TODO: снимать переломы
+               //TODO: снимать легкое кровотечение
             };
         }
 
@@ -38,7 +38,7 @@ public class Splint extends MedicamentBaseItem {
         @Nonnull
         @Override
         public String getName() {
-            return "splint";
+            return "bandage";
         }
 
     }

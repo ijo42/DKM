@@ -9,11 +9,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
-import ru.ijo42.dkm.medicaments.BandageItem;
-import ru.ijo42.dkm.medicaments.BigBandageItem;
-import ru.ijo42.dkm.medicaments.HarnessItem;
-import ru.ijo42.dkm.medicaments.Splint;
-import ru.ijo42.dkm.medicaments.StaffoeItem;
+import ru.ijo42.dkm.medicaments.IbuprofonItem;
+import ru.ijo42.dkm.medicaments.KetonolItem;
+import ru.ijo42.dkm.medicaments.compressing.BandageItem;
+import ru.ijo42.dkm.medicaments.compressing.BigBandageItem;
+import ru.ijo42.dkm.medicaments.compressing.HarnessItem;
+import ru.ijo42.dkm.medicaments.compressing.MateroeItem;
+import ru.ijo42.dkm.medicaments.compressing.SplintItem;
+import ru.ijo42.dkm.medicaments.compressing.StaffoeItem;
 import ru.ijo42.dkm.medicaments.aidkits.AI0Item;
 import ru.ijo42.dkm.medicaments.aidkits.DMItem;
 import ru.ijo42.dkm.medicaments.aidkits.Fast91Item;
@@ -50,18 +53,31 @@ public class ItemsRegistry {
     public static final MedicamentBaseItem Staffoe = new StaffoeItem();
 
     @GameRegistry.ObjectHolder("splint")
-    public static final MedicamentBaseItem Splint = new Splint();
+    public static final MedicamentBaseItem Splint = new SplintItem();
+
+    @GameRegistry.ObjectHolder("materoe")
+    public static final MedicamentBaseItem Materoe = new MateroeItem();
+
+    @GameRegistry.ObjectHolder("ibuprofon")
+    public static final MedicamentBaseItem Ibuprofon = new IbuprofonItem();
+
+    @GameRegistry.ObjectHolder("ketonol")
+    public static final MedicamentBaseItem Ketonol = new KetonolItem();
 
     @SubscribeEvent
     public static void onRegistryItem(RegistryEvent.Register<Item> e) {
-        e.getRegistry().registerAll(AI0, Fast91, DM, SFV, Bandage, BigBandage, Harness, Staffoe, Splint);
+        e.getRegistry().registerAll(AI0, Fast91, DM, SFV, Bandage,
+                BigBandage, Harness, Staffoe, Splint, Materoe, Ibuprofon,
+                Ketonol
+        );
     }
 
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public static void onRegistryModel(ModelRegistryEvent e) {
         for (MedicamentBaseItem medicamentBaseItem : Arrays.asList(
-                AI0, Fast91, DM, SFV, Bandage, BigBandage, Harness, Staffoe, Splint
+                AI0, Fast91, DM, SFV, Bandage, BigBandage, Harness,
+                Staffoe, Splint, Materoe, Ibuprofon, Ketonol
         )) {
             medicamentBaseItem.initModel();
         }
