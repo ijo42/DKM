@@ -19,7 +19,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ru.ijo42.dkm.Medicine;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
-import ru.ijo42.dkm.interfaces.TripleConsumer;
+import ru.ijo42.dkm.interfaces.EffectConsumer;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -28,7 +28,7 @@ import java.util.List;
 public class MedicamentBaseItem extends ItemPotion {
 
     private final ITextComponent desk;
-    private final List<TripleConsumer<ItemStack, World, EntityLivingBase>>
+    private final EffectConsumer<ItemStack, World, EntityLivingBase>
             relatedEffects;
 
     public MedicamentBaseItem(
@@ -38,7 +38,7 @@ public class MedicamentBaseItem extends ItemPotion {
         this.setCreativeTab(Medicine.DKM);
         this.setTranslationKey(specs.getName());
         this.setMaxStackSize(specs.getMaxStackSize());
-        this.setMaxDamage(specs.getMaxDamage() + 1);
+        this.setMaxDamage(specs.getMaxDamage() - 1);
         this.desk = specs.getDescription();
         this.relatedEffects = specs.getRelatedEffects();
     }
@@ -96,7 +96,7 @@ public class MedicamentBaseItem extends ItemPotion {
                 }
             }
 
-            relatedEffects.forEach(a -> a.accept(stack, worldIn, entityLiving));
+            relatedEffects.accept(stack, worldIn, entityLiving);
         }
         return stack;
     }

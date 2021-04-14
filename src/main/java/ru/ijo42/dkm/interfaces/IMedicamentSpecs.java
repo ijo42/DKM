@@ -1,6 +1,5 @@
 package ru.ijo42.dkm.interfaces;
 
-import com.google.common.collect.ImmutableList;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -14,7 +13,7 @@ import javax.annotation.Nonnull;
 public interface IMedicamentSpecs {
 
     @Nonnull
-    ImmutableList<TripleConsumer<ItemStack, World, EntityLivingBase>> getRelatedEffects();
+    EffectConsumer<ItemStack, World, EntityLivingBase> getRelatedEffects();
 
     /**
      * TODO: implement

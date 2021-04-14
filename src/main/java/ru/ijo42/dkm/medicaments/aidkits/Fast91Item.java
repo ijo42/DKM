@@ -1,12 +1,11 @@
 package ru.ijo42.dkm.medicaments.aidkits;
 
-import com.google.common.collect.ImmutableList;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
-import ru.ijo42.dkm.interfaces.TripleConsumer;
+import ru.ijo42.dkm.interfaces.EffectConsumer;
 
 import javax.annotation.Nonnull;
 
@@ -20,11 +19,11 @@ public class Fast91Item extends MedicamentBaseItem {
 
         @Nonnull
         @Override
-        public ImmutableList<TripleConsumer<ItemStack, World, EntityLivingBase>> getRelatedEffects() {
-            return ImmutableList.of((itemStack, world, entityLivingBase) -> {
+        public EffectConsumer<ItemStack, World, EntityLivingBase> getRelatedEffects() {
+            return (itemStack, world, entityLivingBase) -> {
                 //TODO: снимать легкое кровотечение
                 entityLivingBase.heal(4);
-            });
+            };
         }
 
         @Override
