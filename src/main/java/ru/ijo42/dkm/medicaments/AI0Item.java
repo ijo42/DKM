@@ -31,7 +31,7 @@ public class AI0Item extends MedicamentBaseItem {
 
         @Override
         public int getMaxDamage() {
-            return 2;
+            return 3;
         }
 
         @Nonnull

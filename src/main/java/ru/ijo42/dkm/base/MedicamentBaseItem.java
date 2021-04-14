@@ -38,7 +38,7 @@ public class MedicamentBaseItem extends ItemPotion {
         this.setCreativeTab(Medicine.DKM);
         this.setTranslationKey(specs.getName());
         this.setMaxStackSize(specs.getMaxStackSize());
-        this.setMaxDamage(specs.getMaxDamage());
+        this.setMaxDamage(specs.getMaxDamage() + 1);
         this.desk = specs.getDescription();
         this.relatedEffects = specs.getRelatedEffects();
     }

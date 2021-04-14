@@ -34,7 +34,7 @@ public interface IMedicamentSpecs {
     }
 
     /**
-     * @return number of uses of this medicament -1
+     * @return number of uses of this medicament
      */
     int getMaxDamage();
 
