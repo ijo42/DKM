@@ -1,4 +1,28 @@
 item.ai0.desc=Lorem ipsum dolor sit amet
 item.ai0.name=First aid kit AI-0
 
+item.fast91.desc=Lorem ipsum dolor sit amet
+item.fast91.name=First aid kit Fast-91
+
+item.dm.desc=Lorem ipsum dolor sit amet
+item.dm.name=First aid kit DM
+
+item.sfv.desc=Lorem ipsum dolor sit amet
+item.sfv.name=First aid kit SFV
+
+item.bandage.desc=Lorem ipsum dolor sit amet
+item.bandage.name=Bandage
+
+item.bigbandage.desc=Lorem ipsum dolor sit amet
+item.bigbandage.name=Big Bandage
+
+item.harness.desc=Lorem ipsum dolor sit amet
+item.harness.name=Harness
+
+item.staffoe.desc=Lorem ipsum dolor sit amet
+item.staffoe.name=Hemostatic Staffoe
+
+item.splint.desc=Lorem ipsum dolor sit amet
+item.splint.name=Compression Splint
+
 itemGroup.dkm=DKM - Medicine mod
