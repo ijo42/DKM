@@ -34,4 +34,16 @@ item.ibuprofon.name=Ibuprofon
 item.ketonol.desc=Lorem ipsum dolor sit amet
 item.ketonol.name=Ketonol
 
+item.niburoxydase.desc=Lorem ipsum dolor sit amet
+item.niburoxydase.name=Stimulator Niburoxydase
+
+item.ebabista.desc=Lorem ipsum dolor sit amet
+item.ebabista.name=Stimulator EbaBista
+
+item.91b.desc=Lorem ipsum dolor sit amet
+item.91b.name=Stimulator №91-B
+
+item.achitilcelin.desc=Lorem ipsum dolor sit amet
+item.achitilcelin.name=Stimulator Achitilcelin
+
 itemGroup.dkm=DKM - Medicine mod

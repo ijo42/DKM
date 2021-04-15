@@ -9,8 +9,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
+import ru.ijo42.dkm.medicaments.stimulators.AchitilcelinItem;
+import ru.ijo42.dkm.medicaments.stimulators.EbaBistaItem;
 import ru.ijo42.dkm.medicaments.IbuprofonItem;
 import ru.ijo42.dkm.medicaments.KetonolItem;
+import ru.ijo42.dkm.medicaments.stimulators.N91BItem;
+import ru.ijo42.dkm.medicaments.stimulators.NiburoxydaseItem;
 import ru.ijo42.dkm.medicaments.compressing.BandageItem;
 import ru.ijo42.dkm.medicaments.compressing.BigBandageItem;
 import ru.ijo42.dkm.medicaments.compressing.HarnessItem;
@@ -21,6 +25,7 @@ import ru.ijo42.dkm.medicaments.aidkits.AI0Item;
 import ru.ijo42.dkm.medicaments.aidkits.DMItem;
 import ru.ijo42.dkm.medicaments.aidkits.Fast91Item;
 import ru.ijo42.dkm.medicaments.aidkits.SFVItem;
+import ru.ijo42.dkm.medicaments.stimulators.PS0Item;
 
 import java.util.Arrays;
 
@@ -64,11 +69,26 @@ public class ItemsRegistry {
     @GameRegistry.ObjectHolder("ketonol")
     public static final MedicamentBaseItem Ketonol = new KetonolItem();
 
+    @GameRegistry.ObjectHolder("niburoxydase")
+    public static final MedicamentBaseItem Niburoxydase = new NiburoxydaseItem();
+
+    @GameRegistry.ObjectHolder("ebabista")
+    public static final MedicamentBaseItem EbaBista = new EbaBistaItem();
+
+    @GameRegistry.ObjectHolder("91b")
+    public static final MedicamentBaseItem N91B = new N91BItem();
+
+     @GameRegistry.ObjectHolder("achitilcelin")
+    public static final MedicamentBaseItem Achitilcelin = new AchitilcelinItem();
+
+     @GameRegistry.ObjectHolder("ps0")
+    public static final MedicamentBaseItem PS0 = new PS0Item();
+
     @SubscribeEvent
     public static void onRegistryItem(RegistryEvent.Register<Item> e) {
         e.getRegistry().registerAll(AI0, Fast91, DM, SFV, Bandage,
                 BigBandage, Harness, Staffoe, Splint, Materoe, Ibuprofon,
-                Ketonol
+                Ketonol, Niburoxydase, EbaBista, N91B, Achitilcelin, PS0
         );
     }
 
@@ -77,7 +97,8 @@ public class ItemsRegistry {
     public static void onRegistryModel(ModelRegistryEvent e) {
         for (MedicamentBaseItem medicamentBaseItem : Arrays.asList(
                 AI0, Fast91, DM, SFV, Bandage, BigBandage, Harness,
-                Staffoe, Splint, Materoe, Ibuprofon, Ketonol
+                Staffoe, Splint, Materoe, Ibuprofon, Ketonol,
+                Niburoxydase, EbaBista, N91B, Achitilcelin, PS0
         )) {
             medicamentBaseItem.initModel();
         }
