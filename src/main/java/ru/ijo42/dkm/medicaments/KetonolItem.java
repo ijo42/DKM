@@ -36,7 +36,7 @@ public class KetonolItem extends MedicamentBaseItem {
 
         @Override
         public int getMaxDamage() {
-            return 41;
+            return 1;
         }
 
         @Nonnull
