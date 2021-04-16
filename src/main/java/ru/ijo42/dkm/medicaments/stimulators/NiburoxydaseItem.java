@@ -27,7 +27,7 @@ public class NiburoxydaseItem extends MedicamentBaseItem {
                 //TODO: накладывать эффект `под обезболивающим` (200с)
                 entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 20));
                 entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 10));
-                //TODO: накладывать эффект `истощение II` (20c)
+                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 20, 2));
             };
         }
 
