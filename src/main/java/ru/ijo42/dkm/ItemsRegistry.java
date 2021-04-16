@@ -9,22 +9,22 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
-import ru.ijo42.dkm.medicaments.stimulators.AchitilcelinItem;
-import ru.ijo42.dkm.medicaments.stimulators.EbaBistaItem;
 import ru.ijo42.dkm.medicaments.IbuprofonItem;
 import ru.ijo42.dkm.medicaments.KetonolItem;
-import ru.ijo42.dkm.medicaments.stimulators.N91BItem;
-import ru.ijo42.dkm.medicaments.stimulators.NiburoxydaseItem;
+import ru.ijo42.dkm.medicaments.aidkits.AI0Item;
+import ru.ijo42.dkm.medicaments.aidkits.DMItem;
+import ru.ijo42.dkm.medicaments.aidkits.Fast91Item;
+import ru.ijo42.dkm.medicaments.aidkits.SFVItem;
 import ru.ijo42.dkm.medicaments.compressing.BandageItem;
 import ru.ijo42.dkm.medicaments.compressing.BigBandageItem;
 import ru.ijo42.dkm.medicaments.compressing.HarnessItem;
 import ru.ijo42.dkm.medicaments.compressing.MateroeItem;
 import ru.ijo42.dkm.medicaments.compressing.SplintItem;
 import ru.ijo42.dkm.medicaments.compressing.StaffoeItem;
-import ru.ijo42.dkm.medicaments.aidkits.AI0Item;
-import ru.ijo42.dkm.medicaments.aidkits.DMItem;
-import ru.ijo42.dkm.medicaments.aidkits.Fast91Item;
-import ru.ijo42.dkm.medicaments.aidkits.SFVItem;
+import ru.ijo42.dkm.medicaments.stimulators.AchitilcelinItem;
+import ru.ijo42.dkm.medicaments.stimulators.EbaBistaItem;
+import ru.ijo42.dkm.medicaments.stimulators.N91BItem;
+import ru.ijo42.dkm.medicaments.stimulators.NiburoxydaseItem;
 import ru.ijo42.dkm.medicaments.stimulators.PS0Item;
 
 import java.util.Arrays;
@@ -78,10 +78,10 @@ public class ItemsRegistry {
     @GameRegistry.ObjectHolder("91b")
     public static final MedicamentBaseItem N91B = new N91BItem();
 
-     @GameRegistry.ObjectHolder("achitilcelin")
+    @GameRegistry.ObjectHolder("achitilcelin")
     public static final MedicamentBaseItem Achitilcelin = new AchitilcelinItem();
 
-     @GameRegistry.ObjectHolder("ps0")
+    @GameRegistry.ObjectHolder("ps0")
     public static final MedicamentBaseItem PS0 = new PS0Item();
 
     @SubscribeEvent

@@ -18,8 +18,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ru.ijo42.dkm.Medicine;
-import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 import ru.ijo42.dkm.interfaces.EffectConsumer;
+import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -34,11 +34,11 @@ public class MedicamentBaseItem extends ItemPotion {
     public MedicamentBaseItem(
             IMedicamentSpecs specs
     ) {
-        this.setRegistryName(Medicine.getResourceLocation(specs.getName()).toString());
-        this.setCreativeTab(Medicine.DKM);
-        this.setTranslationKey(specs.getName());
-        this.setMaxStackSize(specs.getMaxStackSize());
-        this.setMaxDamage(specs.getMaxDamage() - 1);
+        this.setRegistryName(Medicine.getResourceLocation(specs.getName()).toString())
+                .setCreativeTab(Medicine.DKM)
+                .setTranslationKey(specs.getName())
+                .setMaxStackSize(specs.getMaxStackSize())
+                .setMaxDamage(specs.getMaxDamage() - 1);
         this.desk = specs.getDescription();
         this.relatedEffects = specs.getRelatedEffects();
     }

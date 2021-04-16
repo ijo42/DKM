@@ -4,8 +4,8 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
-import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 import ru.ijo42.dkm.interfaces.EffectConsumer;
+import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 
 import javax.annotation.Nonnull;
 
@@ -21,7 +21,7 @@ public class BigBandageItem extends MedicamentBaseItem {
         @Override
         public EffectConsumer<ItemStack, World, EntityLivingBase> getRelatedEffects() {
             return (itemStack, world, entityLivingBase) -> {
-               //TODO: снимать легкое кровотечение
+                //TODO: снимать легкое кровотечение
             };
         }
 

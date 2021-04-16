@@ -21,7 +21,7 @@ public class MateroeItem extends MedicamentBaseItem {
         @Override
         public EffectConsumer<ItemStack, World, EntityLivingBase> getRelatedEffects() {
             return (itemStack, world, entityLivingBase) -> {
-               //TODO: снимать переломы
+                //TODO: снимать переломы
             };
         }
 
