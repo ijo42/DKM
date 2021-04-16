@@ -1,16 +1,17 @@
 package ru.ijo42.dkm.medicaments.stimulators;
 
-import net.minecraft.entity.EntityLivingBase;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import ru.ijo42.dkm.Constants;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
-import ru.ijo42.dkm.interfaces.EffectConsumer;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public class NiburoxydaseItem extends MedicamentBaseItem {
 
@@ -18,19 +19,20 @@ public class NiburoxydaseItem extends MedicamentBaseItem {
         super(new NiburoxydaseSpecs());
     }
 
-    static class NiburoxydaseSpecs implements IMedicamentSpecs {
-
-        @Nonnull
-        @Override
-        public EffectConsumer<ItemStack, World, EntityLivingBase> getRelatedEffects() {
-            return (itemStack, world, entityLivingBase) -> {
-                //TODO: снимать `боль`
-                //TODO: накладывать эффект `под обезболивающим` (200с)
-                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 20 * Constants.TICK_IN_SECONDS));
-                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 10 * Constants.TICK_IN_SECONDS));
-                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 20 * Constants.TICK_IN_SECONDS, 2));
-            };
+    @Override
+    @MethodsReturnNonnullByDefault
+    @ParametersAreNonnullByDefault
+    protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
+        if (!worldIn.isRemote) {
+            //TODO: снимать `боль`
+            //TODO: накладывать эффект `под обезболивающим` (200с)
+            player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 20 * Constants.TICK_IN_SECONDS));
+            player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 10 * Constants.TICK_IN_SECONDS));
+            player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 20 * Constants.TICK_IN_SECONDS, 2));
         }
+    }
+
+    static class NiburoxydaseSpecs implements IMedicamentSpecs {
 
         @Override
         public int getUsageTime() {

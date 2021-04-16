@@ -1,16 +1,17 @@
 package ru.ijo42.dkm.medicaments;
 
-import net.minecraft.entity.EntityLivingBase;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import ru.ijo42.dkm.Constants;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
-import ru.ijo42.dkm.interfaces.EffectConsumer;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public class IbuprofonItem extends MedicamentBaseItem {
 
@@ -18,17 +19,18 @@ public class IbuprofonItem extends MedicamentBaseItem {
         super(new IbuprofonSpecs());
     }
 
-    static class IbuprofonSpecs implements IMedicamentSpecs {
-
-        @Nonnull
-        @Override
-        public EffectConsumer<ItemStack, World, EntityLivingBase> getRelatedEffects() {
-            return (itemStack, world, entityLivingBase) -> {
-                //TODO: снимать `боль`
-                //TODO: накладывать эффект `под обезболивающим` (90с)
-                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 5 * Constants.TICK_IN_SECONDS, 2));
-            };
+    @Override
+    @MethodsReturnNonnullByDefault
+    @ParametersAreNonnullByDefault
+    protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
+        if (!worldIn.isRemote) {
+            //TODO: снимать `боль`
+            //TODO: накладывать эффект `под обезболивающим` (90с)
+            player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 5 * Constants.TICK_IN_SECONDS, 2));
         }
+    }
+
+    static class IbuprofonSpecs implements IMedicamentSpecs {
 
         @Override
         public int getUsageTime() {

@@ -2,45 +2,48 @@ package ru.ijo42.dkm.base;
 
 import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.PotionTypes;
-import net.minecraft.item.ItemPotion;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionUtils;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import ru.ijo42.dkm.Constants;
 import ru.ijo42.dkm.Medicine;
-import ru.ijo42.dkm.interfaces.EffectConsumer;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-public class MedicamentBaseItem extends ItemPotion {
+public class MedicamentBaseItem extends ItemFood {
 
+    public final int itemUseDuration;
     private final ITextComponent desk;
-    private final EffectConsumer<ItemStack, World, EntityLivingBase>
-            relatedEffects;
 
     public MedicamentBaseItem(
             IMedicamentSpecs specs
     ) {
-        this.setRegistryName(Medicine.getResourceLocation(specs.getName()).toString())
+        super(1, false);
+        this.setAlwaysEdible()
                 .setCreativeTab(Medicine.DKM)
                 .setTranslationKey(specs.getName())
                 .setMaxStackSize(specs.getMaxStackSize())
-                .setMaxDamage(specs.getMaxDamage() - 1);
+                .setMaxDamage(specs.getMaxDamage() - 1)
+                .setRegistryName(Medicine.getResourceLocation(specs.getName()).toString());
+
+        this.itemUseDuration = specs.getUsageTime() * Constants.TICK_IN_SECONDS;
         this.desk = specs.getDescription();
-        this.relatedEffects = specs.getRelatedEffects();
+    }
+
+    @Override
+    @MethodsReturnNonnullByDefault
+    @ParametersAreNonnullByDefault
+    public int getMaxItemUseDuration(final ItemStack stack) {
+        return itemUseDuration;
     }
 
     @SideOnly(Side.CLIENT)
@@ -54,59 +57,28 @@ public class MedicamentBaseItem extends ItemPotion {
     }
 
     @Override
+    @MethodsReturnNonnullByDefault
     @ParametersAreNonnullByDefault
-    @MethodsReturnNonnullByDefault
-    public String getItemStackDisplayName(ItemStack stack) {
-        return new TextComponentTranslation(getTranslationKey() + ".name").getFormattedText();
-    }
+    protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 
-    @SideOnly(Side.CLIENT)
-    @Override
-    @MethodsReturnNonnullByDefault
-    public ItemStack getDefaultInstance() {
-        return PotionUtils.addPotionToItemStack(new ItemStack(this), PotionTypes.EMPTY);
     }
 
     @Override
-    @ParametersAreNonnullByDefault
     @MethodsReturnNonnullByDefault
+    @ParametersAreNonnullByDefault
+    @SuppressWarnings("NullableProblems")
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
-        EntityPlayer entityplayer = entityLiving instanceof EntityPlayer ? (EntityPlayer) entityLiving : null;
+        if (entityLiving instanceof EntityPlayer) {
+            EntityPlayer entityplayer = (EntityPlayer) entityLiving;
+            this.onFoodEaten(stack, worldIn, entityplayer);
 
-        if (entityplayer == null || !entityplayer.capabilities.isCreativeMode) {
-            stack.damageItem(1, entityLiving);
-        }
-
-        if (entityplayer instanceof EntityPlayerMP) {
-            CriteriaTriggers.CONSUME_ITEM.trigger((EntityPlayerMP) entityplayer, stack);
-        }
-
-        if (!worldIn.isRemote) {
-            for (PotionEffect potioneffect : PotionUtils.getEffectsFromStack(stack)) {
-                if (potioneffect.getPotion().isInstant()) {
-                    potioneffect.getPotion().affectEntity(
-                            entityplayer,
-                            entityplayer,
-                            entityLiving,
-                            potioneffect.getAmplifier(),
-                            1.0D
-                    );
-                } else {
-                    entityLiving.addPotionEffect(new PotionEffect(potioneffect));
-                }
+            if (entityplayer instanceof EntityPlayerMP) {
+                CriteriaTriggers.CONSUME_ITEM.trigger((EntityPlayerMP) entityplayer, stack);
             }
-
-            relatedEffects.accept(stack, worldIn, entityLiving);
         }
+
+        stack.damageItem(1, entityLiving);
         return stack;
-    }
-
-    @Override
-    @ParametersAreNonnullByDefault
-    public void getSubItems(final CreativeTabs tab, final NonNullList<ItemStack> items) {
-        if (this.isInCreativeTab(tab)) {
-            items.add(new ItemStack(this));
-        }
     }
 
     @SideOnly(Side.CLIENT)

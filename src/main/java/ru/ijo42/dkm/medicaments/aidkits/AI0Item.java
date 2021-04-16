@@ -1,13 +1,14 @@
 package ru.ijo42.dkm.medicaments.aidkits;
 
-import net.minecraft.entity.EntityLivingBase;
+import mcp.MethodsReturnNonnullByDefault;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
-import ru.ijo42.dkm.interfaces.EffectConsumer;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 public class AI0Item extends MedicamentBaseItem {
 
@@ -15,13 +16,16 @@ public class AI0Item extends MedicamentBaseItem {
         super(new AI0Specs());
     }
 
-    static class AI0Specs implements IMedicamentSpecs {
-
-        @Nonnull
-        @Override
-        public EffectConsumer<ItemStack, World, EntityLivingBase> getRelatedEffects() {
-            return (itemStack, world, entityLivingBase) -> entityLivingBase.heal(3);
+    @Override
+    @MethodsReturnNonnullByDefault
+    @ParametersAreNonnullByDefault
+    protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
+        if (!worldIn.isRemote) {
+            player.heal(3);
         }
+    }
+
+    static class AI0Specs implements IMedicamentSpecs {
 
         @Override
         public int getUsageTime() {
