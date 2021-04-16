@@ -5,6 +5,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import ru.ijo42.dkm.Constants;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
 import ru.ijo42.dkm.interfaces.EffectConsumer;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
@@ -23,9 +24,9 @@ public class N91BItem extends MedicamentBaseItem {
         @Override
         public EffectConsumer<ItemStack, World, EntityLivingBase> getRelatedEffects() {
             return (itemStack, world, entityLivingBase) -> {
-                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.SPEED, 50, 2));
-                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 20));
-                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 65));
+                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.SPEED, 50 * Constants.TICK_IN_SECONDS, 2));
+                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 20 * Constants.TICK_IN_SECONDS));
+                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 65 * Constants.TICK_IN_SECONDS));
             };
         }
 

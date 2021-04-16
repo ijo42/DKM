@@ -5,6 +5,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import ru.ijo42.dkm.Constants;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
 import ru.ijo42.dkm.interfaces.EffectConsumer;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
@@ -25,9 +26,9 @@ public class NiburoxydaseItem extends MedicamentBaseItem {
             return (itemStack, world, entityLivingBase) -> {
                 //TODO: снимать `боль`
                 //TODO: накладывать эффект `под обезболивающим` (200с)
-                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 20));
-                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 10));
-                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 20, 2));
+                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 20 * Constants.TICK_IN_SECONDS));
+                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 10 * Constants.TICK_IN_SECONDS));
+                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 20 * Constants.TICK_IN_SECONDS, 2));
             };
         }
 

@@ -5,6 +5,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import ru.ijo42.dkm.Constants;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
 import ru.ijo42.dkm.interfaces.EffectConsumer;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
@@ -25,7 +26,7 @@ public class IbuprofonItem extends MedicamentBaseItem {
             return (itemStack, world, entityLivingBase) -> {
                 //TODO: снимать `боль`
                 //TODO: накладывать эффект `под обезболивающим` (90с)
-                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 5, 2));
+                entityLivingBase.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 5 * Constants.TICK_IN_SECONDS, 2));
             };
         }
 
