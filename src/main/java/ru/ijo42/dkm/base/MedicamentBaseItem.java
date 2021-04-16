@@ -57,7 +57,7 @@ public class MedicamentBaseItem extends ItemPotion {
     @ParametersAreNonnullByDefault
     @MethodsReturnNonnullByDefault
     public String getItemStackDisplayName(ItemStack stack) {
-        return new TextComponentTranslation(getTranslationKey()).getFormattedText();
+        return new TextComponentTranslation(getTranslationKey() + ".name").getFormattedText();
     }
 
     @SideOnly(Side.CLIENT)
