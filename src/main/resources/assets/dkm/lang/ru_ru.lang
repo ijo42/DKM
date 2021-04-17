@@ -51,4 +51,8 @@ item.ps0.name=Стимулятор PS0
 
 effect.anesthetic=Под Обезболивающим
 
+effect.bleeding=Кровотечение лёгкое
+
+effect.heavybleeding=Кровотечение тяжелое
+
 itemGroup.dkm=DKM - Медицинский мод

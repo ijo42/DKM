@@ -51,4 +51,8 @@ item.ps0.name=Stimulator PS0
 
 effect.anesthetic=Under Anesthetic
 
+effect.bleeding=Light Bleeding
+
+effect.heavybleeding=Heavy Bleeding
+
 itemGroup.dkm=DKM - Medicine mod

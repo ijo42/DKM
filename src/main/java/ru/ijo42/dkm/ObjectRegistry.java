@@ -10,6 +10,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
+import ru.ijo42.dkm.effects.negative.BleedingEffect;
+import ru.ijo42.dkm.effects.negative.HeavyBleedingEffect;
 import ru.ijo42.dkm.effects.positive.AnestheticEffect;
 import ru.ijo42.dkm.medicaments.IbuprofonItem;
 import ru.ijo42.dkm.medicaments.KetonolItem;
@@ -89,6 +91,12 @@ public class ObjectRegistry {
     @GameRegistry.ObjectHolder("anesthetic")
     public static final Potion Anesthetic = new AnestheticEffect();
 
+    @GameRegistry.ObjectHolder("bleeding")
+    public static final Potion Bleeding = new BleedingEffect();
+
+    @GameRegistry.ObjectHolder("heavybleeding")
+    public static final Potion HardBleeding = new HeavyBleedingEffect();
+
     @SubscribeEvent
     public static void onRegistryItem(RegistryEvent.Register<Item> e) {
         e.getRegistry().registerAll(AI0, Fast91, DM, SFV, Bandage,
@@ -100,7 +108,7 @@ public class ObjectRegistry {
     @SubscribeEvent
     public static void onRegistryPotion(RegistryEvent.Register<Potion> e) {
         e.getRegistry().registerAll(
-                Anesthetic
+                Anesthetic, Bleeding, HardBleeding
         );
     }
 
