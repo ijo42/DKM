@@ -49,4 +49,6 @@ item.achitilcelin.name=Stimulator Achitilcelin
 item.ps0.desc=Lorem ipsum dolor sit amet
 item.ps0.name=Stimulator PS0
 
+effect.anesthetic=Under Anesthetic
+
 itemGroup.dkm=DKM - Medicine mod

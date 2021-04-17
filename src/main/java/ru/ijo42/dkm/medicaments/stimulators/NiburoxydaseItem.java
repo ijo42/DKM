@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import ru.ijo42.dkm.Constants;
+import ru.ijo42.dkm.ObjectRegistry;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 
@@ -25,7 +26,7 @@ public class NiburoxydaseItem extends MedicamentBaseItem {
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
         if (!worldIn.isRemote) {
             //TODO: снимать `боль`
-            //TODO: накладывать эффект `под обезболивающим` (200с)
+            player.addPotionEffect(new PotionEffect(ObjectRegistry.Anesthetic, 200 * Constants.TICK_IN_SECONDS));
             player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 20 * Constants.TICK_IN_SECONDS));
             player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 10 * Constants.TICK_IN_SECONDS));
             player.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 20 * Constants.TICK_IN_SECONDS, 2));
