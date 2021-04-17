@@ -1,6 +1,5 @@
 package ru.ijo42.dkm.base;
 
-import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,7 +20,7 @@ import java.util.List;
 
 public class MedicamentBaseItem extends ItemFood {
 
-    public final int itemUseDuration;
+    private final int itemUseDuration;
     private final ITextComponent desk;
 
     public MedicamentBaseItem(
@@ -40,7 +39,6 @@ public class MedicamentBaseItem extends ItemFood {
     }
 
     @Override
-    @MethodsReturnNonnullByDefault
     @ParametersAreNonnullByDefault
     public int getMaxItemUseDuration(final ItemStack stack) {
         return itemUseDuration;
@@ -57,16 +55,14 @@ public class MedicamentBaseItem extends ItemFood {
     }
 
     @Override
-    @MethodsReturnNonnullByDefault
     @ParametersAreNonnullByDefault
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
 
     }
 
+    @Nonnull
     @Override
-    @MethodsReturnNonnullByDefault
     @ParametersAreNonnullByDefault
-    @SuppressWarnings("NullableProblems")
     public ItemStack onItemUseFinish(ItemStack stack, World worldIn, EntityLivingBase entityLiving) {
         if (entityLiving instanceof EntityPlayer) {
             EntityPlayer entityplayer = (EntityPlayer) entityLiving;

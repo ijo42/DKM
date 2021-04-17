@@ -1,6 +1,5 @@
 package ru.ijo42.dkm.medicaments.compressing;
 
-import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -17,7 +16,6 @@ public class SplintItem extends MedicamentBaseItem {
     }
 
     @Override
-    @MethodsReturnNonnullByDefault
     @ParametersAreNonnullByDefault
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
         if (!worldIn.isRemote) {

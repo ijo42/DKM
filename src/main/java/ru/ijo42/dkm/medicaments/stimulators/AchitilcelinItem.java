@@ -1,6 +1,5 @@
 package ru.ijo42.dkm.medicaments.stimulators;
 
-import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -23,7 +22,6 @@ public class AchitilcelinItem extends MedicamentBaseItem {
     }
 
     @Override
-    @MethodsReturnNonnullByDefault
     @ParametersAreNonnullByDefault
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
         if (!worldIn.isRemote) {

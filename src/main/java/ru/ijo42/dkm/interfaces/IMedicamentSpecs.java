@@ -1,12 +1,12 @@
 package ru.ijo42.dkm.interfaces;
 
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 
-import javax.annotation.Nonnull;
-
+@MethodsReturnNonnullByDefault
 public interface IMedicamentSpecs {
 
     /**
@@ -31,7 +31,6 @@ public interface IMedicamentSpecs {
         return new TextComponentTranslation("item." + getName() + ".desc");
     }
 
-    @Nonnull
     String getName();
 
 }

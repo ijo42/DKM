@@ -1,6 +1,5 @@
 package ru.ijo42.dkm.medicaments;
 
-import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
@@ -21,7 +20,6 @@ public class IbuprofonItem extends MedicamentBaseItem {
     }
 
     @Override
-    @MethodsReturnNonnullByDefault
     @ParametersAreNonnullByDefault
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
         if (!worldIn.isRemote) {

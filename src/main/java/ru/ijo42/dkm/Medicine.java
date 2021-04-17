@@ -1,6 +1,5 @@
 package ru.ijo42.dkm;
 
-import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -8,6 +7,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
+import javax.annotation.Nonnull;
 
 @Mod(
         modid = Medicine.MOD_ID,
@@ -21,8 +22,8 @@ public class Medicine {
             MOD_NAME = "DKM", VERSION = "%VERSION%",
             CERTIFICATE = "%CERTIFICATE%";
 
-    @MethodsReturnNonnullByDefault
     public static final CreativeTabs DKM = new CreativeTabs(MOD_ID) {
+        @Nonnull
         @Override
         @SideOnly(Side.CLIENT)
         public ItemStack createIcon() {
