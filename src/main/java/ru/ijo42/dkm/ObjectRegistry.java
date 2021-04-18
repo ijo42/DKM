@@ -38,10 +38,10 @@ import java.util.Arrays;
 public class ObjectRegistry {
 
     @GameRegistry.ObjectHolder("ai0")
-    public static final MedicamentBaseItem AI0 = new AI0Item();
+    public static final MedicamentBaseItem AI_0 = new AI0Item();
 
     @GameRegistry.ObjectHolder("fast91")
-    public static final MedicamentBaseItem Fast91 = new Fast91Item();
+    public static final MedicamentBaseItem FAST_91 = new Fast91Item();
 
     @GameRegistry.ObjectHolder("dm")
     public static final MedicamentBaseItem DM = new DMItem();
@@ -50,65 +50,65 @@ public class ObjectRegistry {
     public static final MedicamentBaseItem SFV = new SFVItem();
 
     @GameRegistry.ObjectHolder("bandage")
-    public static final MedicamentBaseItem Bandage = new BandageItem();
+    public static final MedicamentBaseItem BANDAGE = new BandageItem();
 
     @GameRegistry.ObjectHolder("bigbandage")
-    public static final MedicamentBaseItem BigBandage = new BigBandageItem();
+    public static final MedicamentBaseItem BIG_BANDAGE = new BigBandageItem();
 
     @GameRegistry.ObjectHolder("harness")
-    public static final MedicamentBaseItem Harness = new HarnessItem();
+    public static final MedicamentBaseItem HARNESS = new HarnessItem();
 
     @GameRegistry.ObjectHolder("staffoe")
-    public static final MedicamentBaseItem Staffoe = new StaffoeItem();
+    public static final MedicamentBaseItem STAFFOE = new StaffoeItem();
 
     @GameRegistry.ObjectHolder("splint")
-    public static final MedicamentBaseItem Splint = new SplintItem();
+    public static final MedicamentBaseItem SPLINT = new SplintItem();
 
     @GameRegistry.ObjectHolder("materoe")
-    public static final MedicamentBaseItem Materoe = new MateroeItem();
+    public static final MedicamentBaseItem MATEROE = new MateroeItem();
 
     @GameRegistry.ObjectHolder("ibuprofon")
-    public static final MedicamentBaseItem Ibuprofon = new IbuprofonItem();
+    public static final MedicamentBaseItem IBUPROFON = new IbuprofonItem();
 
     @GameRegistry.ObjectHolder("ketonol")
-    public static final MedicamentBaseItem Ketonol = new KetonolItem();
+    public static final MedicamentBaseItem KETONOL = new KetonolItem();
 
     @GameRegistry.ObjectHolder("niburoxydase")
-    public static final MedicamentBaseItem Niburoxydase = new NiburoxydaseItem();
+    public static final MedicamentBaseItem NIBUROXYDASE = new NiburoxydaseItem();
 
     @GameRegistry.ObjectHolder("ebabista")
-    public static final MedicamentBaseItem EbaBista = new EbaBistaItem();
+    public static final MedicamentBaseItem EBA_BISTA = new EbaBistaItem();
 
     @GameRegistry.ObjectHolder("91b")
-    public static final MedicamentBaseItem N91B = new N91BItem();
+    public static final MedicamentBaseItem N_91_B = new N91BItem();
 
     @GameRegistry.ObjectHolder("achitilcelin")
-    public static final MedicamentBaseItem Achitilcelin = new AchitilcelinItem();
+    public static final MedicamentBaseItem ACHITILCELIN = new AchitilcelinItem();
 
     @GameRegistry.ObjectHolder("ps0")
-    public static final MedicamentBaseItem PS0 = new PS0Item();
+    public static final MedicamentBaseItem PS_0 = new PS0Item();
 
     @GameRegistry.ObjectHolder("anesthetic")
-    public static final Potion Anesthetic = new AnestheticEffect();
+    public static final Potion ANESTHETIC = new AnestheticEffect();
 
     @GameRegistry.ObjectHolder("bleeding")
-    public static final Potion Bleeding = new BleedingEffect();
+    public static final Potion BLEEDING = new BleedingEffect();
 
     @GameRegistry.ObjectHolder("heavybleeding")
-    public static final Potion HardBleeding = new HeavyBleedingEffect();
+    public static final Potion HEAVY_BLEEDING = new HeavyBleedingEffect();
 
     @SubscribeEvent
     public static void onRegistryItem(RegistryEvent.Register<Item> e) {
-        e.getRegistry().registerAll(AI0, Fast91, DM, SFV, Bandage,
-                BigBandage, Harness, Staffoe, Splint, Materoe, Ibuprofon,
-                Ketonol, Niburoxydase, EbaBista, N91B, Achitilcelin, PS0
+        e.getRegistry().registerAll(AI_0, FAST_91, DM, SFV, BANDAGE,
+                BIG_BANDAGE, HARNESS, STAFFOE, SPLINT, MATEROE, IBUPROFON,
+                KETONOL, NIBUROXYDASE, EBA_BISTA, N_91_B, ACHITILCELIN, PS_0
         );
     }
 
     @SubscribeEvent
     public static void onRegistryPotion(RegistryEvent.Register<Potion> e) {
         e.getRegistry().registerAll(
-                Anesthetic, Bleeding, HardBleeding
+                ANESTHETIC, BLEEDING, HEAVY_BLEEDING
         );
     }
 
@@ -116,9 +116,9 @@ public class ObjectRegistry {
     @SideOnly(Side.CLIENT)
     public static void onRegistryModel(ModelRegistryEvent e) {
         for (MedicamentBaseItem medicamentBaseItem : Arrays.asList(
-                AI0, Fast91, DM, SFV, Bandage, BigBandage, Harness,
-                Staffoe, Splint, Materoe, Ibuprofon, Ketonol,
-                Niburoxydase, EbaBista, N91B, Achitilcelin, PS0
+                AI_0, FAST_91, DM, SFV, BANDAGE, BIG_BANDAGE, HARNESS,
+                STAFFOE, SPLINT, MATEROE, IBUPROFON, KETONOL,
+                NIBUROXYDASE, EBA_BISTA, N_91_B, ACHITILCELIN, PS_0
         )) {
             medicamentBaseItem.initModel();
         }
