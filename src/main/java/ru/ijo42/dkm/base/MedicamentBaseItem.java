@@ -73,7 +73,11 @@ public class MedicamentBaseItem extends ItemFood {
             }
         }
 
-        stack.damageItem(1, entityLiving);
+        if (getMaxDamage(stack) > 1) {
+            stack.damageItem(1, entityLiving);
+        } else {
+            stack.shrink(1);
+        }
         return stack;
     }
 
