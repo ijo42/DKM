@@ -18,6 +18,7 @@ public class MateroeItem extends MedicamentBaseItem {
     @Override
     @ParametersAreNonnullByDefault
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
+        super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
             //TODO: снимать переломы
         }

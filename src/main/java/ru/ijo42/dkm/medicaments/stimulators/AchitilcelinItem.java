@@ -24,6 +24,7 @@ public class AchitilcelinItem extends MedicamentBaseItem {
     @Override
     @ParametersAreNonnullByDefault
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
+        super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
             player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 50 * Constants.TICK_IN_SECONDS));
             player.addPotionEffect(new PotionEffect(MobEffects.HEALTH_BOOST, 50 * Constants.TICK_IN_SECONDS));

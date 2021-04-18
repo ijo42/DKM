@@ -57,7 +57,9 @@ public class MedicamentBaseItem extends ItemFood {
     @Override
     @ParametersAreNonnullByDefault
     protected void onFoodEaten(ItemStack stack, World worldIn, EntityPlayer player) {
-
+        if (!worldIn.isRemote) {
+            player.curePotionEffects(stack);
+        }
     }
 
     @Nonnull

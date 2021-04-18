@@ -18,8 +18,8 @@ public class DMItem extends MedicamentBaseItem {
     @Override
     @ParametersAreNonnullByDefault
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
+        super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
-            //TODO: снимать легкое и тяжелое кровотечение
             player.heal(3);
         }
     }

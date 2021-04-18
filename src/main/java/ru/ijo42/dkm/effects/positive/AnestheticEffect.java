@@ -5,7 +5,7 @@ import net.minecraft.potion.Potion;
 import ru.ijo42.dkm.Medicine;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AnestheticEffect extends Potion {
@@ -19,7 +19,7 @@ public class AnestheticEffect extends Potion {
 
     @Nonnull
     public List<ItemStack> getCurativeItems() {
-        return new ArrayList<>();
+        return Collections.emptyList();
     }
 
 }

@@ -22,6 +22,7 @@ public class NiburoxydaseItem extends MedicamentBaseItem {
     @Override
     @ParametersAreNonnullByDefault
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
+        super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
             //TODO: снимать `боль`
             player.addPotionEffect(new PotionEffect(ObjectRegistry.ANESTHETIC, 200 * Constants.TICK_IN_SECONDS));

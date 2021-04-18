@@ -21,6 +21,7 @@ public class N91BItem extends MedicamentBaseItem {
     @Override
     @ParametersAreNonnullByDefault
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
+        super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
             player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 50 * Constants.TICK_IN_SECONDS, 2));
             player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 20 * Constants.TICK_IN_SECONDS));
