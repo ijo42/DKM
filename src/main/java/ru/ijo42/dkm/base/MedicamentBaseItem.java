@@ -6,6 +6,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -26,9 +29,8 @@ public class MedicamentBaseItem extends ItemFood {
     public MedicamentBaseItem(
             IMedicamentSpecs specs
     ) {
-        super(1, false);
-        this.setAlwaysEdible()
-                .setCreativeTab(Medicine.DKM)
+        super(0, 0, false);
+        this.setCreativeTab(Medicine.DKM)
                 .setTranslationKey(specs.getName())
                 .setMaxStackSize(specs.getMaxStackSize())
                 .setMaxDamage(specs.getMaxDamage() - 1)
@@ -81,6 +83,16 @@ public class MedicamentBaseItem extends ItemFood {
             stack.shrink(1);
         }
         return stack;
+    }
+
+    @Nonnull
+    @Override
+    @ParametersAreNonnullByDefault
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+        ItemStack itemstack = playerIn.getHeldItem(handIn);
+
+        playerIn.setActiveHand(handIn);
+        return new ActionResult<>(EnumActionResult.SUCCESS, itemstack);
     }
 
     @SideOnly(Side.CLIENT)
