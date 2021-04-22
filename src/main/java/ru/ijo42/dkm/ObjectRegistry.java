@@ -11,7 +11,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
 import ru.ijo42.dkm.effects.negative.BleedingEffect;
+import ru.ijo42.dkm.effects.negative.ContusionEffect;
+import ru.ijo42.dkm.effects.negative.FractureArmEffect;
+import ru.ijo42.dkm.effects.negative.FractureLegEffect;
 import ru.ijo42.dkm.effects.negative.HeavyBleedingEffect;
+import ru.ijo42.dkm.effects.negative.PainEffect;
 import ru.ijo42.dkm.effects.positive.AnestheticEffect;
 import ru.ijo42.dkm.medicaments.IbuprofonItem;
 import ru.ijo42.dkm.medicaments.KetonolItem;
@@ -97,6 +101,18 @@ public class ObjectRegistry {
     @GameRegistry.ObjectHolder("heavybleeding")
     public static final Potion HEAVY_BLEEDING = new HeavyBleedingEffect();
 
+    @GameRegistry.ObjectHolder(value="fracturearm")
+    public static final Potion FRACTURE_ARM = new FractureArmEffect();
+
+    @GameRegistry.ObjectHolder(value="fractureleg")
+    public static final Potion FRACTURE_LEG = new FractureLegEffect();
+
+    @GameRegistry.ObjectHolder(value="pain")
+    public static final Potion PAIN = new PainEffect();
+
+    @GameRegistry.ObjectHolder(value="contusion")
+    public static final Potion CONTUSION = new ContusionEffect();
+
     @SubscribeEvent
     public static void onRegistryItem(RegistryEvent.Register<Item> e) {
         e.getRegistry().registerAll(AI_0, FAST_91, DM, SFV, BANDAGE,
@@ -108,7 +124,8 @@ public class ObjectRegistry {
     @SubscribeEvent
     public static void onRegistryPotion(RegistryEvent.Register<Potion> e) {
         e.getRegistry().registerAll(
-                ANESTHETIC, BLEEDING, HEAVY_BLEEDING
+                ANESTHETIC, BLEEDING, HEAVY_BLEEDING, FRACTURE_ARM, FRACTURE_LEG,
+                PAIN, CONTUSION
         );
     }
 

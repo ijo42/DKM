@@ -55,4 +55,11 @@ effect.bleeding=Кровотечение лёгкое
 
 effect.heavybleeding=Кровотечение тяжелое
 
+effect.fracturearm=Перелом руки
+effect.fractureleg=Перелом ноги
+
+effect.pain=Боль
+
+effect.contusion=Контузия
+
 itemGroup.dkm=DKM - Медицинский мод

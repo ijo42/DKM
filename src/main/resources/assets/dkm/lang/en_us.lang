@@ -55,4 +55,11 @@ effect.bleeding=Light Bleeding
 
 effect.heavybleeding=Heavy Bleeding
 
+effect.fracturearm=Fractured Arm
+effect.fractureleg=Fractured Leg
+
+effect.pain=Pain
+
+effect.contusion=Contusion
+
 itemGroup.dkm=DKM - Medicine mod
