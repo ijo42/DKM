@@ -7,9 +7,9 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -37,49 +37,43 @@ public class DamageListener {
     }
 
     @SubscribeEvent
-    public static void onRespawn(LivingSpawnEvent ev) {
-        if (ev.getEntityLiving() instanceof EntityPlayerMP) {
-            final UUID uuid = ((EntityPlayerMP) ev.getEntityLiving()).getGameProfile().getId();
-            if (potionSaveMapHolder.potionSaveMap.containsKey(uuid)) {
-                applyPotion(ev.getEntityLiving(), potionSaveMapHolder.potionSaveMap.get(uuid));
-            }
+    public static void onRespawn(PlayerEvent.PlayerRespawnEvent ev) {
+        final UUID uuid = ev.player.getGameProfile().getId();
+        if (potionSaveMapHolder.potionSaveMap.containsKey(uuid)) {
+            applyPotion(ev.player, potionSaveMapHolder.potionSaveMap.get(uuid));
+            potionSaveMapHolder.potionSaveMap.remove(uuid);
         }
     }
 
     @SubscribeEvent
     public static void onDamage(LivingHurtEvent ev) {
-        final EntityLivingBase entityLiving = ev.getEntityLiving();
-        if (entityLiving instanceof EntityPlayerMP) {
+        final EntityLivingBase player = ev.getEntityLiving();
+        if (player instanceof EntityPlayerMP && ev.getSource() != DamageSource.OUT_OF_WORLD) {
 
             if (ev.getAmount() > 2.0F) {
 
-                applyPotion(entityLiving, ObjectRegistry.BLEEDING, 180, 15);
+                applyPotion(player, ObjectRegistry.BLEEDING, 180, 25);
 
-                applyPotion(entityLiving, ObjectRegistry.HEAVY_BLEEDING, 200, 7);
+                applyPotion(player, ObjectRegistry.HEAVY_BLEEDING, 200, 7);
 
-                applyPotion(entityLiving, ObjectRegistry.FRACTURE_ARM, 900, 15);
-
-                applyPotion(entityLiving, ObjectRegistry.FRACTURE_LEG, 1500, 15);
-
-                if (!entityLiving.isPotionActive(ObjectRegistry.ANESTHETIC)) {
-                    applyPotion(entityLiving, ObjectRegistry.PAIN, 60, 30);
+                if (ev.getSource() != DamageSource.FALL && !player.isPotionActive(ObjectRegistry.FRACTURE_LEG)) {
+                    applyPotion(player, ObjectRegistry.FRACTURE_ARM, 1500, 15);
                 }
 
-                applyPotion(entityLiving, ObjectRegistry.CONTUSION, 3, 7);
+                if (!player.isPotionActive(ObjectRegistry.FRACTURE_ARM)) {
+                    applyPotion(player, ObjectRegistry.FRACTURE_LEG, 1500, 15);
+                }
+
+                if (!player.isPotionActive(ObjectRegistry.ANESTHETIC)) {
+                    applyPotion(player, ObjectRegistry.PAIN, 60, 30);
+                }
+
+                applyPotion(player, ObjectRegistry.CONTUSION, 1, 3);
 
             }
-        }
-    }
 
-    @SubscribeEvent
-    public static void onFall(LivingHurtEvent ev) {
-        if (ev.getEntityLiving() instanceof EntityPlayerMP) {
-            EntityPlayerMP player = (EntityPlayerMP) ev.getEntityLiving();
-
-            if (ev.getSource() == DamageSource.FALL) {
-                if (ev.getAmount() >= 3.0F) {
-                    applyPotion(player, ObjectRegistry.FRACTURE_LEG, 1500, 40);
-                }
+            if (ev.getSource() == DamageSource.FALL && ev.getAmount() >= 6.0F) {
+                applyPotion(player, ObjectRegistry.FRACTURE_LEG, 1500, 60);
             }
         }
     }
