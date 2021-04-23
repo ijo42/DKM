@@ -86,7 +86,7 @@ public class DamageListener {
      */
     private static void applyPotion(EntityLivingBase player, Potion potion, int seconds, int chance) {
         if (Math.random() < chance / 100.0D) {
-            player.addPotionEffect(new PotionEffect(potion, seconds * Constants.TICK_IN_SECONDS, 1, false, false));
+            player.addPotionEffect(new PotionEffect(potion, seconds * Constants.TICK_IN_SECONDS, 0, false, false));
         }
     }
 
