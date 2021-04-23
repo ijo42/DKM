@@ -27,7 +27,7 @@ public class DamageListener {
                     ev.getEntityLiving()
                             .getActivePotionEffects()
             );
-            if (potionSave.hasMeaning()) {
+            if (!potionSave.isEmpty()) {
                 potionSaveMapHolder.potionSaveMap.put(
                         ((EntityPlayerMP) ev.getEntityLiving()).getGameProfile().getId(),
                         potionSave
@@ -52,28 +52,21 @@ public class DamageListener {
         if (entityLiving instanceof EntityPlayerMP) {
 
             if (ev.getAmount() > 2.0F) {
-                switch (Math.floorMod((int) (Math.random() * 100), 6)) {
-                    case 0:
-                        applyPotion(entityLiving, ObjectRegistry.BLEEDING, 180, 15);
-                        break;
-                    case 1:
-                        applyPotion(entityLiving, ObjectRegistry.HEAVY_BLEEDING, 200, 7);
-                        break;
-                    case 2:
-                        applyPotion(entityLiving, ObjectRegistry.FRACTURE_ARM, 900, 15);
-                        break;
-                    case 3:
-                        applyPotion(entityLiving, ObjectRegistry.FRACTURE_LEG, 1500, 15);
-                        break;
-                    case 4:
-                        if (!entityLiving.isPotionActive(ObjectRegistry.ANESTHETIC)) {
-                            applyPotion(entityLiving, ObjectRegistry.PAIN, 60, 30);
-                        }
-                        break;
-                    case 5:
-                        applyPotion(entityLiving, ObjectRegistry.CONTUSION, 3, 7);
-                        break;
+
+                applyPotion(entityLiving, ObjectRegistry.BLEEDING, 180, 15);
+
+                applyPotion(entityLiving, ObjectRegistry.HEAVY_BLEEDING, 200, 7);
+
+                applyPotion(entityLiving, ObjectRegistry.FRACTURE_ARM, 900, 15);
+
+                applyPotion(entityLiving, ObjectRegistry.FRACTURE_LEG, 1500, 15);
+
+                if (!entityLiving.isPotionActive(ObjectRegistry.ANESTHETIC)) {
+                    applyPotion(entityLiving, ObjectRegistry.PAIN, 60, 30);
                 }
+
+                applyPotion(entityLiving, ObjectRegistry.CONTUSION, 3, 7);
+
             }
         }
     }
@@ -104,7 +97,7 @@ public class DamageListener {
     }
 
     private static void applyPotion(EntityLivingBase player, PotionSaveEffect potionMap) {
-        if (potionMap.hasMeaning()) {
+        if (!potionMap.isEmpty()) {
             potionMap.forEach(player::addPotionEffect);
         }
     }
@@ -127,10 +120,6 @@ public class DamageListener {
                     this.add(potion);
                 }
             }
-        }
-
-        public boolean hasMeaning() {
-            return !this.isEmpty();
         }
 
     }
