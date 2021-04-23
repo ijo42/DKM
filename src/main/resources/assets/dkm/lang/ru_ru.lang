@@ -49,17 +49,17 @@ item.achitilcelin.name=Стимулятор Ахитилцелин
 item.ps0.desc=Разнообразный и богатый опыт новая модель организационной
 item.ps0.name=Стимулятор PS0
 
-effect.anesthetic=Под Обезболивающим
+potion.anesthetic=Под Обезболивающим
 
-effect.bleeding=Кровотечение лёгкое
+potion.bleeding=Кровотечение лёгкое
 
-effect.heavybleeding=Кровотечение тяжелое
+potion.heavybleeding=Кровотечение тяжелое
 
-effect.fracturearm=Перелом руки
-effect.fractureleg=Перелом ноги
+potion.fracturearm=Перелом руки
+potion.fractureleg=Перелом ноги
 
-effect.pain=Боль
+potion.pain=Боль
 
-effect.contusion=Контузия
+potion.contusion=Контузия
 
 itemGroup.dkm=DKM - Медицинский мод

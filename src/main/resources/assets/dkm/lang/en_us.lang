@@ -49,17 +49,17 @@ item.achitilcelin.name=Stimulator Achitilcelin
 item.ps0.desc=Lorem ipsum dolor sit amet
 item.ps0.name=Stimulator PS0
 
-effect.anesthetic=Under Anesthetic
+potion.anesthetic=Under Anesthetic
 
-effect.bleeding=Light Bleeding
+potion.bleeding=Light Bleeding
 
-effect.heavybleeding=Heavy Bleeding
+potion.heavybleeding=Heavy Bleeding
 
-effect.fracturearm=Fractured Arm
-effect.fractureleg=Fractured Leg
+potion.fracturearm=Fractured Arm
+potion.fractureleg=Fractured Leg
 
-effect.pain=Pain
+potion.pain=Pain
 
-effect.contusion=Contusion
+potion.contusion=Contusion
 
 itemGroup.dkm=DKM - Medicine mod

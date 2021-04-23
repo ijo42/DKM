@@ -81,7 +81,7 @@ public class DamageListener {
     /**
      * @param player  applicable player
      * @param potion  applicable potion
-     * @param seconds duration of effects
+     * @param seconds duration of potion
      * @param chance  integer chance value of applicable potion (100% = 100)
      */
     private static void applyPotion(EntityLivingBase player, Potion potion, int seconds, int chance) {

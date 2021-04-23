@@ -1,24 +1,21 @@
-package ru.ijo42.dkm.effects.negative;
+package ru.ijo42.dkm.potion.negative;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
 import net.minecraft.util.DamageSource;
 import ru.ijo42.dkm.Constants;
-import ru.ijo42.dkm.Medicine;
 import ru.ijo42.dkm.ObjectRegistry;
+import ru.ijo42.dkm.potion.PotionBase;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HeavyBleedingEffect extends Potion {
+public class HeavyBleedingEffect extends PotionBase {
 
     public HeavyBleedingEffect() {
-        super(true, 16284963);
-        this.setPotionName("effect.heavybleeding")
-                .setRegistryName(Medicine.getResourceLocation("heavybleeding").toString());
+        super(true, "heavybleeding");
     }
 
     @Override
