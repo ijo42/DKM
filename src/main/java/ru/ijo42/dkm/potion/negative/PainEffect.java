@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import ru.ijo42.dkm.Medicine;
+import ru.ijo42.dkm.ObjectRegistry;
 import ru.ijo42.dkm.potion.PotionBase;
 
 import javax.annotation.Nonnull;
@@ -22,7 +23,17 @@ public class PainEffect extends PotionBase {
     @Override
     @ParametersAreNonnullByDefault
     public void performEffect(EntityLivingBase entityLivingBaseIn, int amplifier) {
-        entityLivingBaseIn.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 10,1));
+        entityLivingBaseIn.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 10, 1));
+    }
+
+    @Override
+    @Nonnull
+    public List<ItemStack> getCurativeItems() {
+        ArrayList<ItemStack> ret = new ArrayList<>();
+        ret.add(new ItemStack(ObjectRegistry.IBUPROFON));
+        ret.add(new ItemStack(ObjectRegistry.KETONOL));
+        ret.add(new ItemStack(ObjectRegistry.NIBUROXYDASE));
+        return ret;
     }
 
 }

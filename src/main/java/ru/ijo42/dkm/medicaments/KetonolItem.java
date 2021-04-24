@@ -24,7 +24,6 @@ public class KetonolItem extends MedicamentBaseItem {
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
         super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
-            //TODO: снимать `боль`
             player.addPotionEffect(new PotionEffect(ObjectRegistry.ANESTHETIC, 200 * Constants.TICK_IN_SECONDS));
             player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 9 * Constants.TICK_IN_SECONDS, 2));
         }
