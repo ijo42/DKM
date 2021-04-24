@@ -31,6 +31,8 @@ public class FractureLegEffect extends PotionBase {
     public List<ItemStack> getCurativeItems() {
         ArrayList<ItemStack> ret = new ArrayList<>();
         ret.add(new ItemStack(ObjectRegistry.BANDAGE));
+        ret.add(new ItemStack(ObjectRegistry.SPLINT));
+        ret.add(new ItemStack(ObjectRegistry.MATEROE));
         ret.add(new ItemStack(ObjectRegistry.BIG_BANDAGE));
         ret.add(new ItemStack(ObjectRegistry.ACHITILCELIN));
         ret.add(new ItemStack(ObjectRegistry.EBA_BISTA));

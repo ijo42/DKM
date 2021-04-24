@@ -15,15 +15,6 @@ public class MateroeItem extends MedicamentBaseItem {
         super(new MateroeSpecs());
     }
 
-    @Override
-    @ParametersAreNonnullByDefault
-    protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
-        super.onFoodEaten(stack, worldIn, player);
-        if (!worldIn.isRemote) {
-            //TODO: снимать переломы
-        }
-    }
-
     static class MateroeSpecs implements IMedicamentSpecs {
 
         @Override

@@ -15,15 +15,6 @@ public class SplintItem extends MedicamentBaseItem {
         super(new SplintSpecs());
     }
 
-    @Override
-    @ParametersAreNonnullByDefault
-    protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
-        super.onFoodEaten(stack, worldIn, player);
-        if (!worldIn.isRemote) {
-            //TODO: снимать переломы
-        }
-    }
-
     static class SplintSpecs implements IMedicamentSpecs {
 
         @Override
