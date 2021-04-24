@@ -26,8 +26,8 @@ public class PainEffect extends PotionBase {
         entityLivingBaseIn.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 10, 1));
     }
 
-    @Override
     @Nonnull
+    @Override
     public List<ItemStack> getCurativeItems() {
         ArrayList<ItemStack> ret = new ArrayList<>();
         ret.add(new ItemStack(ObjectRegistry.IBUPROFON));

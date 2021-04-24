@@ -37,59 +37,59 @@ import ru.ijo42.dkm.medicaments.stimulators.PS0Item;
 
 import java.util.Arrays;
 
-@GameRegistry.ObjectHolder(Medicine.MOD_ID)
 @Mod.EventBusSubscriber
+@GameRegistry.ObjectHolder(Medicine.MOD_ID)
 public class ObjectRegistry {
 
-    @GameRegistry.ObjectHolder("ai0")
+    @GameRegistry.ItemStackHolder("ai0")
     public static final MedicamentBaseItem AI_0 = new AI0Item();
 
-    @GameRegistry.ObjectHolder("fast91")
+    @GameRegistry.ItemStackHolder("fast91")
     public static final MedicamentBaseItem FAST_91 = new Fast91Item();
 
-    @GameRegistry.ObjectHolder("dm")
+    @GameRegistry.ItemStackHolder("dm")
     public static final MedicamentBaseItem DM = new DMItem();
 
-    @GameRegistry.ObjectHolder("sfv")
+    @GameRegistry.ItemStackHolder("sfv")
     public static final MedicamentBaseItem SFV = new SFVItem();
 
-    @GameRegistry.ObjectHolder("bandage")
+    @GameRegistry.ItemStackHolder("bandage")
     public static final MedicamentBaseItem BANDAGE = new BandageItem();
 
-    @GameRegistry.ObjectHolder("bigbandage")
+    @GameRegistry.ItemStackHolder("bigbandage")
     public static final MedicamentBaseItem BIG_BANDAGE = new BigBandageItem();
 
-    @GameRegistry.ObjectHolder("harness")
+    @GameRegistry.ItemStackHolder("harness")
     public static final MedicamentBaseItem HARNESS = new HarnessItem();
 
-    @GameRegistry.ObjectHolder("staffoe")
+    @GameRegistry.ItemStackHolder("staffoe")
     public static final MedicamentBaseItem STAFFOE = new StaffoeItem();
 
-    @GameRegistry.ObjectHolder("splint")
+    @GameRegistry.ItemStackHolder("splint")
     public static final MedicamentBaseItem SPLINT = new SplintItem();
 
-    @GameRegistry.ObjectHolder("materoe")
+    @GameRegistry.ItemStackHolder("materoe")
     public static final MedicamentBaseItem MATEROE = new MateroeItem();
 
-    @GameRegistry.ObjectHolder("ibuprofon")
+    @GameRegistry.ItemStackHolder("ibuprofon")
     public static final MedicamentBaseItem IBUPROFON = new IbuprofonItem();
 
-    @GameRegistry.ObjectHolder("ketonol")
+    @GameRegistry.ItemStackHolder("ketonol")
     public static final MedicamentBaseItem KETONOL = new KetonolItem();
 
-    @GameRegistry.ObjectHolder("niburoxydase")
+    @GameRegistry.ItemStackHolder("niburoxydase")
     public static final MedicamentBaseItem NIBUROXYDASE = new NiburoxydaseItem();
 
-    @GameRegistry.ObjectHolder("ebabista")
+    @GameRegistry.ItemStackHolder("ebabista")
     public static final MedicamentBaseItem EBA_BISTA = new EbaBistaItem();
 
-    @GameRegistry.ObjectHolder("91b")
+    @GameRegistry.ItemStackHolder("91b")
     public static final MedicamentBaseItem N_91_B = new N91BItem();
 
-    @GameRegistry.ObjectHolder("achitilcelin")
+    @GameRegistry.ItemStackHolder("achitilcelin")
     public static final MedicamentBaseItem ACHITILCELIN = new AchitilcelinItem();
 
-    @GameRegistry.ObjectHolder("ps0")
+    @GameRegistry.ItemStackHolder("ps0")
     public static final MedicamentBaseItem PS_0 = new PS0Item();
 
     @GameRegistry.ObjectHolder("anesthetic")
@@ -101,16 +101,16 @@ public class ObjectRegistry {
     @GameRegistry.ObjectHolder("heavybleeding")
     public static final Potion HEAVY_BLEEDING = new HeavyBleedingEffect();
 
-    @GameRegistry.ObjectHolder(value="fracturearm")
+    @GameRegistry.ObjectHolder("fracturearm")
     public static final Potion FRACTURE_ARM = new FractureArmEffect();
 
-    @GameRegistry.ObjectHolder(value="fractureleg")
+    @GameRegistry.ObjectHolder("fractureleg")
     public static final Potion FRACTURE_LEG = new FractureLegEffect();
 
-    @GameRegistry.ObjectHolder(value="pain")
+    @GameRegistry.ObjectHolder("pain")
     public static final Potion PAIN = new PainEffect();
 
-    @GameRegistry.ObjectHolder(value="contusion")
+    @GameRegistry.ObjectHolder("contusion")
     public static final Potion CONTUSION = new ContusionEffect();
 
     @SubscribeEvent

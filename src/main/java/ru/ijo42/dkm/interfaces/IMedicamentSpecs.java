@@ -6,12 +6,15 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 
+import javax.annotation.Nonnull;
+
 @MethodsReturnNonnullByDefault
 public interface IMedicamentSpecs {
 
     /**
      * TODO: implement
      */
+    @Nonnull
     default SoundEvent getSoundEvents() {
         return SoundEvents.ENTITY_GENERIC_DRINK;
     }
@@ -27,10 +30,12 @@ public interface IMedicamentSpecs {
      */
     int getMaxDamage();
 
+    @Nonnull
     default ITextComponent getDescription() {
         return new TextComponentTranslation("item." + getName() + ".desc");
     }
 
+    @Nonnull
     String getName();
 
 }

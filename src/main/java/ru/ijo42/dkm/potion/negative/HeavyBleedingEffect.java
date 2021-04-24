@@ -24,8 +24,8 @@ public class HeavyBleedingEffect extends PotionBase {
         entityLivingBaseIn.attackEntityFrom(DamageSource.MAGIC, 2.0F);
     }
 
-    @Override
     @Nonnull
+    @Override
     public List<ItemStack> getCurativeItems() {
         ArrayList<ItemStack> ret = new ArrayList<>();
         ret.add(new ItemStack(ObjectRegistry.SPLINT));

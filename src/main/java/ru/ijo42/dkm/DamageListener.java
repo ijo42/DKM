@@ -10,6 +10,7 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
+import net.minecraftforge.fml.relauncher.Side;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -17,7 +18,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.UUID;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(Side.SERVER)
 public class DamageListener {
 
     @SubscribeEvent

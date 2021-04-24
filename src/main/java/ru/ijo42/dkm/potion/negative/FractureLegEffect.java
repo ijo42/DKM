@@ -26,8 +26,8 @@ public class FractureLegEffect extends PotionBase {
         entityLivingBaseIn.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 10,2));
     }
 
-    @Override
     @Nonnull
+    @Override
     public List<ItemStack> getCurativeItems() {
         ArrayList<ItemStack> ret = new ArrayList<>();
         ret.add(new ItemStack(ObjectRegistry.BANDAGE));
