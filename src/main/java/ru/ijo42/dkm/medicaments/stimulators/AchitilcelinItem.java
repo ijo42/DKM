@@ -5,6 +5,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
+import ru.ijo42.dkm.base.PotionApplier;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 
 import javax.annotation.Nonnull;
@@ -24,14 +25,14 @@ public class AchitilcelinItem extends MedicamentBaseItem {
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
         super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
-            applyPotion(player, MobEffects.RESISTANCE, 50);
-            applyPotion(player, MobEffects.HEALTH_BOOST, 50);
-            applyPotion(player, MobEffects.HUNGER, 200);
-            applyPotion(player, MobEffects.SLOWNESS, 10);
+            PotionApplier.applyPotion(player, MobEffects.RESISTANCE, 50);
+            PotionApplier.applyPotion(player, MobEffects.HEALTH_BOOST, 50);
+            PotionApplier.applyPotion(player, MobEffects.HUNGER, 200);
+            PotionApplier.applyPotion(player, MobEffects.SLOWNESS, 10);
             new Timer(this + " Thread").schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    applyPotion(player, MobEffects.NAUSEA, 20);
+                    PotionApplier.applyPotion(player, MobEffects.NAUSEA, 20);
                 }
             }, TimeUnit.SECONDS.toMillis(120));
         }

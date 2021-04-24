@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import ru.ijo42.dkm.Medicine;
+import ru.ijo42.dkm.base.PotionApplier;
 import ru.ijo42.dkm.potion.PotionBase;
 
 import javax.annotation.Nonnull;
@@ -22,7 +23,7 @@ public class ContusionEffect extends PotionBase {
     @Override
     @ParametersAreNonnullByDefault
     public void performEffect(EntityLivingBase entityLivingBaseIn, int amplifier) {
-        entityLivingBaseIn.addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 10,1));
+        PotionApplier.applyPotion(entityLivingBaseIn, MobEffects.BLINDNESS, 10);
     }
 
 }

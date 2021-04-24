@@ -8,6 +8,7 @@ import net.minecraft.potion.PotionEffect;
 import ru.ijo42.dkm.Constants;
 import ru.ijo42.dkm.Medicine;
 import ru.ijo42.dkm.ObjectRegistry;
+import ru.ijo42.dkm.base.PotionApplier;
 import ru.ijo42.dkm.potion.PotionBase;
 
 import javax.annotation.Nonnull;
@@ -24,7 +25,7 @@ public class FractureArmEffect extends PotionBase {
     @Override
     @ParametersAreNonnullByDefault
     public void performEffect(EntityLivingBase entityLivingBaseIn, int amplifier) {
-        entityLivingBaseIn.addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 10,2));
+        PotionApplier.applyPotion(entityLivingBaseIn, MobEffects.MINING_FATIGUE, 10, 1);
     }
 
     @Nonnull

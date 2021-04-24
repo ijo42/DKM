@@ -5,6 +5,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
+import ru.ijo42.dkm.base.PotionApplier;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 
 import javax.annotation.Nonnull;
@@ -21,8 +22,8 @@ public class EbaBistaItem extends MedicamentBaseItem {
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
         super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
-            applyPotion(player, MobEffects.SPEED, 60, 1);
-            applyPotion(player, MobEffects.SLOWNESS, 80);
+            PotionApplier.applyPotion(player, MobEffects.SPEED, 60, 1);
+            PotionApplier.applyPotion(player, MobEffects.SLOWNESS, 80);
         }
     }
 
