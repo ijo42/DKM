@@ -6,6 +6,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
@@ -105,6 +107,25 @@ public class MedicamentBaseItem extends ItemFood {
                         new net.minecraft.client.renderer.block.model.ModelResourceLocation(
                                 getRegistryName(), "inventory")
                 );
+    }
+
+    protected void applyPotion(EntityLivingBase player, Potion potion, int duration) {
+        applyPotion(player, potion, duration, 0);
+    }
+
+    protected void applyPotion(EntityLivingBase player, Potion potion, int duration, boolean isAmbient) {
+        applyPotion(player, potion, duration, 0, isAmbient);
+    }
+
+    protected void applyPotion(EntityLivingBase player, Potion potion, int duration, int amplifier) {
+        applyPotion(player, potion, duration, amplifier, true);
+    }
+
+    protected void applyPotion(EntityLivingBase player, Potion potion, int duration, int amplifier, boolean isAmbient) {
+        //TODO: handle upper levels of these potion
+        player.addPotionEffect(new PotionEffect(potion,
+                duration * Constants.TICK_IN_SECONDS, amplifier, isAmbient, isAmbient
+        ));
     }
 
 }

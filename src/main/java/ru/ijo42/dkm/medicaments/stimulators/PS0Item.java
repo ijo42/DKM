@@ -3,9 +3,7 @@ package ru.ijo42.dkm.medicaments.stimulators;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import ru.ijo42.dkm.Constants;
 import ru.ijo42.dkm.ObjectRegistry;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
@@ -27,14 +25,14 @@ public class PS0Item extends MedicamentBaseItem {
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
         super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
-            player.addPotionEffect(new PotionEffect(ObjectRegistry.ANESTHETIC, 200 * Constants.TICK_IN_SECONDS));
-            player.addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 50 * Constants.TICK_IN_SECONDS));
-            player.addPotionEffect(new PotionEffect(MobEffects.HASTE, 50 * Constants.TICK_IN_SECONDS));
-            player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 100 * Constants.TICK_IN_SECONDS));
+            applyPotion(player, ObjectRegistry.ANESTHETIC, 200, false);
+            applyPotion(player, MobEffects.STRENGTH, 50);
+            applyPotion(player, MobEffects.HASTE, 50);
+            applyPotion(player, MobEffects.HUNGER, 100);
             new Timer(this + " Thread").schedule(new TimerTask() {
                 @Override
                 public void run() {
-                    player.addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 20 * Constants.TICK_IN_SECONDS));
+                    applyPotion(player, MobEffects.NAUSEA, 20);
                 }
             }, TimeUnit.SECONDS.toMillis(300));
         }

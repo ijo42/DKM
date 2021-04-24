@@ -3,9 +3,7 @@ package ru.ijo42.dkm.medicaments;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import ru.ijo42.dkm.Constants;
 import ru.ijo42.dkm.ObjectRegistry;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
@@ -24,8 +22,8 @@ public class KetonolItem extends MedicamentBaseItem {
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
         super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
-            player.addPotionEffect(new PotionEffect(ObjectRegistry.ANESTHETIC, 200 * Constants.TICK_IN_SECONDS));
-            player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 9 * Constants.TICK_IN_SECONDS, 2));
+            applyPotion(player, ObjectRegistry.ANESTHETIC, 200, false);
+            applyPotion(player, MobEffects.HUNGER, 9, 1);
         }
     }
 

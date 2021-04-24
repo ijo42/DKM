@@ -3,9 +3,7 @@ package ru.ijo42.dkm.medicaments.stimulators;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
-import ru.ijo42.dkm.Constants;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 
@@ -23,9 +21,9 @@ public class N91BItem extends MedicamentBaseItem {
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
         super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
-            player.addPotionEffect(new PotionEffect(MobEffects.SPEED, 50 * Constants.TICK_IN_SECONDS, 2));
-            player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 20 * Constants.TICK_IN_SECONDS));
-            player.addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 65 * Constants.TICK_IN_SECONDS));
+            applyPotion(player, MobEffects.SPEED, 50, 1);
+            applyPotion(player, MobEffects.HUNGER, 20);
+            applyPotion(player, MobEffects.SLOWNESS, 65);
         }
     }
 
