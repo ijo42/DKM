@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import ru.ijo42.dkm.ObjectRegistry;
 import ru.ijo42.dkm.base.MedicamentBaseItem;
+import ru.ijo42.dkm.base.PotionApplier;
 import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 
 import javax.annotation.Nonnull;

@@ -10,7 +10,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import net.minecraftforge.fml.relauncher.Side;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -18,7 +17,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.UUID;
 
-@Mod.EventBusSubscriber(Side.SERVER)
+@Mod.EventBusSubscriber
 public class DamageListener {
 
     @SubscribeEvent
@@ -49,6 +48,7 @@ public class DamageListener {
     @SubscribeEvent
     public static void onDamage(LivingHurtEvent ev) {
         final EntityLivingBase player = ev.getEntityLiving();
+        boolean armFracturedNow = false;
         if (player instanceof EntityPlayerMP && ev.getSource() != DamageSource.OUT_OF_WORLD) {
 
             if (ev.getAmount() > 2.0F) {
@@ -57,11 +57,14 @@ public class DamageListener {
 
                 applyPotion(player, ObjectRegistry.HEAVY_BLEEDING, 200, 7);
 
-                if (ev.getSource() != DamageSource.FALL && !player.isPotionActive(ObjectRegistry.FRACTURE_LEG)) {
-                    applyPotion(player, ObjectRegistry.FRACTURE_ARM, 1500, 15);
+                if (ev.getSource() != DamageSource.FALL) {
+                    armFracturedNow =
+                            applyPotion(player, ObjectRegistry.FRACTURE_ARM, 1500, 15);
+                } else if (ev.getAmount() >= 6.0F) {
+                    applyPotion(player, ObjectRegistry.FRACTURE_LEG, 1500, 60);
                 }
 
-                if (!player.isPotionActive(ObjectRegistry.FRACTURE_ARM)) {
+                if (!armFracturedNow) {
                     applyPotion(player, ObjectRegistry.FRACTURE_LEG, 1500, 15);
                 }
 
@@ -72,10 +75,6 @@ public class DamageListener {
                 applyPotion(player, ObjectRegistry.CONTUSION, 1, 3);
 
             }
-
-            if (ev.getSource() == DamageSource.FALL && ev.getAmount() >= 6.0F) {
-                applyPotion(player, ObjectRegistry.FRACTURE_LEG, 1500, 60);
-            }
         }
     }
 
@@ -85,10 +84,12 @@ public class DamageListener {
      * @param seconds duration of potion
      * @param chance  integer chance value of applicable potion (100% = 100)
      */
-    private static void applyPotion(EntityLivingBase player, Potion potion, int seconds, int chance) {
+    private static boolean applyPotion(EntityLivingBase player, Potion potion, int seconds, int chance) {
         if (Math.random() < chance / 100.0D) {
             player.addPotionEffect(new PotionEffect(potion, seconds * Constants.TICK_IN_SECONDS, 0, false, false));
+            return true;
         }
+        return false;
     }
 
     private static void applyPotion(EntityLivingBase player, PotionSaveEffect potionMap) {
