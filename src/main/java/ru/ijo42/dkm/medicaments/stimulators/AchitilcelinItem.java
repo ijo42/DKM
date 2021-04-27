@@ -10,9 +10,6 @@ import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 public class AchitilcelinItem extends MedicamentBaseItem {
 
@@ -29,12 +26,7 @@ public class AchitilcelinItem extends MedicamentBaseItem {
             PotionApplier.applyPotion(player, MobEffects.HEALTH_BOOST, 50);
             PotionApplier.applyPotion(player, MobEffects.HUNGER, 200);
             PotionApplier.applyPotion(player, MobEffects.SLOWNESS, 10);
-            new Timer(this + " Thread").schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    PotionApplier.applyPotion(player, MobEffects.NAUSEA, 20);
-                }
-            }, TimeUnit.SECONDS.toMillis(120));
+            PotionApplier.applyPotionDelayed(player, MobEffects.NAUSEA, 20, 120);
         }
     }
 

@@ -30,12 +30,7 @@ public class PS0Item extends MedicamentBaseItem {
             PotionApplier.applyPotion(player, MobEffects.STRENGTH, 50);
             PotionApplier.applyPotion(player, MobEffects.HASTE, 50);
             PotionApplier.applyPotion(player, MobEffects.HUNGER, 100);
-            new Timer(this + " Thread").schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    PotionApplier.applyPotion(player, MobEffects.NAUSEA, 20);
-                }
-            }, TimeUnit.SECONDS.toMillis(300));
+            PotionApplier.applyPotionDelayed(player, MobEffects.NAUSEA, 20, 300);
         }
     }
 
