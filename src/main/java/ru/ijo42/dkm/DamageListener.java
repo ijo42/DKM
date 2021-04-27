@@ -47,11 +47,9 @@ public class DamageListener {
 
     @SubscribeEvent
     public static void onRespawn(PlayerEvent.PlayerRespawnEvent ev) {
-        final UUID uuid = ev.player.getGameProfile().getId();
-        if (potionSaveMapHolder.potionSaveMap.containsKey(uuid)) {
-            applyPotion(ev.player, potionSaveMapHolder.potionSaveMap.get(uuid));
-            potionSaveMapHolder.potionSaveMap.remove(uuid);
-        }
+        applyPotion(ev.player, potionSaveMapHolder.potionSaveMap.remove(
+                ev.player.getGameProfile().getId())
+        );
     }
 
     @SubscribeEvent
@@ -102,7 +100,7 @@ public class DamageListener {
     }
 
     private static void applyPotion(EntityLivingBase player, PotionSaveEffect potionMap) {
-        if (!potionMap.isEmpty()) {
+        if (potionMap != null && !potionMap.isEmpty()) {
             potionMap.forEach(player::addPotionEffect);
         }
     }
