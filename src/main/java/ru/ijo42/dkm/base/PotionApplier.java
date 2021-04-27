@@ -11,20 +11,16 @@ import java.util.concurrent.TimeUnit;
 
 public class PotionApplier {
 
-    public static void applyPotion(EntityLivingBase player, Potion potion, int duration, int amplifier) {
-        applyPotion(player, potion, duration, amplifier, false);
-    }
-
     public static void applyPotion(EntityLivingBase player, Potion potion, int duration) {
         applyPotion(player, potion, duration, 0);
     }
 
-    public static void applyPotion(EntityLivingBase player, Potion potion, int duration, boolean isAmbient) {
-        applyPotion(player, potion, duration, 0, isAmbient);
+    public static void applyPotion(EntityLivingBase player, Potion potion, int duration, int amplifier) {
+        applyPotion(player, potion, duration, amplifier, false);
     }
 
-    public static void applyPotion(EntityLivingBase player, Potion potion, int duration, int amplifier) {
-        applyPotion(player, potion, duration, amplifier, true);
+    public static void applyPotion(EntityLivingBase player, Potion potion, int duration, boolean isAmbient) {
+        applyPotion(player, potion, duration, 0, isAmbient);
     }
 
     public static void applyPotion(EntityLivingBase player, Potion potion, int duration, int amplifier, boolean isAmbient) {
@@ -58,7 +54,8 @@ public class PotionApplier {
         TimerHolder.timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                player.addPotionEffect(new PotionEffect(potion,
+                player.addPotionEffect(new PotionEffect(
+                        potion,
                         duration * Constants.TICK_IN_SECONDS, amplifier, isAmbient, isAmbient
                 ));
             }

@@ -23,7 +23,7 @@ public class IbuprofonItem extends MedicamentBaseItem {
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
         super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
-            PotionApplier.applyPotion(player, ObjectRegistry.ANESTHETIC, 90, false);
+            PotionApplier.applyPotion(player, ObjectRegistry.ANESTHETIC, 90);
             PotionApplier.applyPotion(player, MobEffects.HUNGER, 5, 1);
         }
     }

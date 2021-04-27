@@ -11,9 +11,6 @@ import ru.ijo42.dkm.interfaces.IMedicamentSpecs;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 public class PS0Item extends MedicamentBaseItem {
 
@@ -26,7 +23,7 @@ public class PS0Item extends MedicamentBaseItem {
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
         super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
-            PotionApplier.applyPotion(player, ObjectRegistry.ANESTHETIC, 200, false);
+            PotionApplier.applyPotion(player, ObjectRegistry.ANESTHETIC, 200);
             PotionApplier.applyPotion(player, MobEffects.STRENGTH, 50);
             PotionApplier.applyPotion(player, MobEffects.HASTE, 50);
             PotionApplier.applyPotion(player, MobEffects.HUNGER, 100);

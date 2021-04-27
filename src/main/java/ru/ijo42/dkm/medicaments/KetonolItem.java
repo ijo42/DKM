@@ -23,7 +23,7 @@ public class KetonolItem extends MedicamentBaseItem {
     protected void onFoodEaten(final ItemStack stack, final World worldIn, final EntityPlayer player) {
         super.onFoodEaten(stack, worldIn, player);
         if (!worldIn.isRemote) {
-            PotionApplier.applyPotion(player, ObjectRegistry.ANESTHETIC, 200, false);
+            PotionApplier.applyPotion(player, ObjectRegistry.ANESTHETIC, 200);
             PotionApplier.applyPotion(player, MobEffects.HUNGER, 9, 1);
         }
     }
