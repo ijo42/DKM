@@ -28,7 +28,6 @@ public class HeavyBleedingEffect extends PotionBase {
     @Override
     public List<ItemStack> getCurativeItems() {
         ArrayList<ItemStack> ret = new ArrayList<>();
-        ret.add(new ItemStack(ObjectRegistry.SPLINT));
         ret.add(new ItemStack(ObjectRegistry.STAFFOE));
         ret.add(new ItemStack(ObjectRegistry.HARNESS));
         ret.add(new ItemStack(ObjectRegistry.DM));
